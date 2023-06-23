@@ -28,12 +28,14 @@ MODULE_INFO(retpoline, "Y");
 static const struct modversion_info ____versions[]
 __used __section("__versions") = {
 	{ 0x32e21920, "module_layout" },
-	{ 0x5b8239ca, "__x86_return_thunk" },
+	{ 0x9ed554b3, "unregister_keyboard_notifier" },
+	{ 0x96554810, "register_keyboard_notifier" },
 	{ 0x92997ed8, "_printk" },
+	{ 0x5b8239ca, "__x86_return_thunk" },
 	{ 0xbdfb6dbb, "__fentry__" },
 };
 
 MODULE_INFO(depends, "");
 
 
-MODULE_INFO(srcversion, "31FE72DA6A560C890FF9B3F");
+MODULE_INFO(srcversion, "C8A73C92C06A4967EE7B043");
