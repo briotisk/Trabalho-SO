@@ -79,16 +79,6 @@ static int start_server(void){
 static int send_msg(void)
 {  
     int ret=0;  
-    
-    /*kmalloc a receive buffer*/  
-    //sendbuf=kmalloc(BUFFSIZE,GFP_KERNEL);  
-    //if(sendbuf==NULL){  
-    //        printk("server: sendbuf kmalloc error!\n");  
-    //        return -1;  
-    //}  
-    //memset(sendbuf, 0, BUFFSIZE); 
-    //strcpy(sendbuf, buffer);
-    //printk("%s", buffer);
 
     /*send message to client*/  
     memset(&vec,0,sizeof(vec));  

@@ -10,6 +10,7 @@
 #define BUFFER_SIZE 32
 
 int main() {
+    
     int clientSocket, valread;
     struct sockaddr_in serverAddress;
     char *serverIP = "127.0.0.1";
