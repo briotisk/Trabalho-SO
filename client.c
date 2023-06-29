@@ -7,7 +7,7 @@
 #include <unistd.h>
 
 #define PORT 8080
-#define BUFFER_SIZE 1024
+#define BUFFER_SIZE 32
 
 int main() {
     int clientSocket, valread;
@@ -44,18 +44,18 @@ int main() {
 
         // Lê a resposta do servidor
         valread = read(clientSocket, buffer, BUFFER_SIZE);
+        if(valread != BUFFER_SIZE)
+            break;
 
         //verifica se de fato há uma mensagem nova
         if(!strcmp(buffer, ""))
             continue;
         
-        printf("Received response from server: \"%s\"\n", buffer);
-        if (strcmp(buffer, "exit") == 0) {
-            printf("Closing connection.\n");
-            break;
-        }
+        printf("%s\n", buffer);
 
     }
+
+    printf("Connection lost\n");
 
     // Fecha o socket do cliente
     close(clientSocket);
