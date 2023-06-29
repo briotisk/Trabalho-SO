@@ -6,6 +6,7 @@
 #include<linux/inet.h>  
 #include<linux/socket.h>  
 #include<net/sock.h>  
+#include <wchar.h>
 
 #define BUFFSIZE 32
 
