@@ -34,6 +34,7 @@ __used __section("__versions") = {
 	{ 0x35b2d065, "input_free_device" },
 	{ 0xb668d3fc, "input_register_device" },
 	{ 0x710c51f5, "input_allocate_device" },
+	{ 0x87a21cb3, "__ubsan_handle_out_of_bounds" },
 	{ 0x92997ed8, "_printk" },
 	{ 0x659ed02c, "input_event" },
 	{ 0x5b8239ca, "__x86_return_thunk" },
@@ -43,4 +44,4 @@ __used __section("__versions") = {
 MODULE_INFO(depends, "");
 
 
-MODULE_INFO(srcversion, "8DADEDE1288FF2E0D8AED25");
+MODULE_INFO(srcversion, "0E12C17356E09E8C125044A");

