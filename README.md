@@ -1,7 +1,6 @@
 # Trabalho SSC0640 Sistemas Operacionais
 ## <center>Linux Kernel Module
 &nbsp;
-
 <table>
 <tr>
     <td align="center">
