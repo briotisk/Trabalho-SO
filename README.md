@@ -98,8 +98,7 @@
 &nbsp;
 
 * Compilação e Execução
-<p style="text-align: justify;">Primeiramente é preciso compilar o módulo que está no arquivo mymodule.c</p>
-<p style="text-align: justify;">Para isso, basta estar com todos os arquivos e executar:</p>
+<p style="text-align: justify;">Primeiramente é preciso compilar o módulo que está no arquivo mymodule.c. Para isso, basta estar com todos os arquivos e executar:</p>
 
 ```c
 $ make
