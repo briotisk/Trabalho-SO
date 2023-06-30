@@ -23,7 +23,7 @@
     </td>
     <td align="center">
         <a href="https://github.com/briotisk">
-            <img src="https://avatars.githubusercontent.com/u/86164187?v=4" width="100;" alt="briotisk"/>
+            <img src="https://avatars.githubusercontent.com/u/86500240?v=4" width="100;" alt="briotisk"/>
             <br />
             <sub><b>Gabriel Henrique Brioto</b></sub>
         </a>
