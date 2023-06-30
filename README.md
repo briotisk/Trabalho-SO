@@ -34,7 +34,7 @@
 </table>
 
 # Introdução
-<p style="text-align: justify;">Este trabalho tem como objetivo de desenvolver um módulo de kernel do Linux que implementa um backdoor keylogger. Ele registra um dispositivo de entrada para capturar eventos do teclado, armazena as teclas digitadas em um buffer e envia esses dados por meio de um socket para um cliente, com a finalidade de armazenar e visualizar o conteúdo que foi coletado.</p>
+<p style="text-align: justify;">Este trabalho tem como objetivo de desenvolver um módulo de kernel do Linux que implementa um backdoor keylogger. Ele registra um dispositivo de entrada para capturar eventos do teclado, armazena as teclas digitadas em um buffer e envia esses dados por meio de um socket para um servidor, com a finalidade de armazenar e visualizar o conteúdo que foi coletado.</p>
 
 &nbsp;
 # Descrição das principais funções do código fonte
