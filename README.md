@@ -33,6 +33,10 @@
 </tr>
 </table>
 
+# Introdução
+<p style="text-align: justify;"></p>
+
+&nbsp;
 # Descrição das principais funções do código fonte
 
 * Função static void stop_server(void)
@@ -76,7 +80,6 @@
 ```c
 NÃO SEI
 ```
-&nbsp;
 
 * Compilação e Execução
 <p style="text-align: justify;">Primeiramente é preciso compilar o módulo que está no arquivo mymodule.c. Para isso, basta estar com todos os arquivos e executar:</p>
