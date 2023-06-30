@@ -122,6 +122,10 @@
 <p style="text-align: justify;">Esse loop vai ler as mensagens recebidas do servidor usando read() e verifica se a mensagem é vazia ou não. Após isso, constrói uma mensagem JSON com base na mensagem recebida, que a mesma é então publicada no tópico MQTT usando MQTTClient_publishMessage(). A mensagem também é printada no console.</p>
 &nbsp;
 
+## IBM Watson IoT Platform
+
+
+
 # Orientações para execução do código
 
 * Compilação e Execução
