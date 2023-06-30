@@ -5,6 +5,15 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <unistd.h>
+#include <MQTTClient.h>
+
+#define MQTT_HOST "c3dsew.messaging.internetofthings.ibmcloud.com"
+#define MQTT_PORT 1883
+#define MQTT_DEVICEID "d:c3dsew:keyboard:12547614"
+#define MQTT_USER "use-token-auth"
+#define MQTT_TOKEN "BVB9KW1Qy1JKmOoZ9x"
+#define MQTT_TOPIC "iot-2/evt/status/fmt/json"
+#define MQTT_TOPIC_DISPLAY "iot-2/cmd/display/fmt/json"
 
 #define PORT 8080
 #define BUFFER_SIZE 32
@@ -40,16 +49,50 @@ int main() {
 
     }
 
+    MQTTClient client;
+    MQTTClient_connectOptions conn_opts = MQTTClient_connectOptions_initializer;
+    MQTTClient_message pubmsg = MQTTClient_message_initializer;
+    MQTTClient_deliveryToken token;
+    int rc;
+
+    MQTTClient_create(&client, MQTT_HOST, MQTT_DEVICEID, MQTTCLIENT_PERSISTENCE_NONE, NULL);
+
+    conn_opts.keepAliveInterval = 3600;
+    conn_opts.cleansession = 1;
+    conn_opts.username = MQTT_USER;
+    conn_opts.password = MQTT_TOKEN;
+
+    if ((rc = MQTTClient_connect(client, &conn_opts)) != MQTTCLIENT_SUCCESS)
+    {
+        printf("Failed to connect to the MQTT broker, return code %d\n", rc);
+        exit(EXIT_FAILURE);
+    }
+
+    char dataJson[1024];
+    char json1[] = "{\"data\": \"";
+    char json2[] = "\"}";
     while (1) {
 
         memset(message, 0, sizeof(message));
 
         valread = read(clientSocket, message, BUFFER_SIZE);
-        if(valread != BUFFER_SIZE)
+        if(valread != BUFFER_SIZE){
             break;
+        }
 
-        if(!strcmp(message, ""))
+        if(!strcmp(message, "")){
             continue;
+        }
+
+        strcpy(dataJson, json1);
+        strcat(dataJson, message);
+        strcat(dataJson, json2);
+
+        pubmsg.payload = dataJson;
+        pubmsg.payloadlen = strlen(dataJson);
+        pubmsg.qos = 0;
+        pubmsg.retained = 0;
+        MQTTClient_publishMessage(client, MQTT_TOPIC, &pubmsg, &token);
         
         printf("%s\n", message);
 
@@ -58,6 +101,9 @@ int main() {
     printf("Connection lost\n");
 
     close(clientSocket);
+
+    MQTTClient_disconnect(client, 10000);
+    MQTTClient_destroy(&client);
 
     return 0;
 }
