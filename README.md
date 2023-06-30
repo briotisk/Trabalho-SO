@@ -20,7 +20,15 @@
             <br />
             <sub><b>Guilherme Chiarotto De Moraes</b></sub>
         </a>
-    </td></tr>
+    </td>
+    <td align="center">
+        <a href="https://github.com/briotisk">
+            <img src="https://avatars.githubusercontent.com/u/86164187?v=4" width="100;" alt="briotisk"/>
+            <br />
+            <sub><b>Daniel Contente Romanzini</b></sub>
+        </a>
+    </td>
+</tr>
 </table>
 
 # Introdução
