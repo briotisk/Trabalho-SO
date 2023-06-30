@@ -39,6 +39,7 @@
 &nbsp;
 # Descrição das principais funções do código fonte
 
+## Arquivo mymodule.c
 * Função static void stop_server(void)
 <p style="text-align: justify;">Esta função é responsável por liberar os recursos relacionados ao socket do servidor.</p>
 &nbsp;
@@ -71,14 +72,57 @@
 <p style="text-align: justify;">Esta é a função de saída do módulo. Ela para o keylogger e o servidor.</p>
 &nbsp;
 
-# Orientações para execução do código
+## Arquivo client.c
+* Função socket()
+<p style="text-align: justify;">Cria um socket para comunicação.</p>
+&nbsp;
 
-* Instalação
-<p style="text-align: justify;"></p>
+* Função connect()
+<p style="text-align: justify;">Estabelece uma conexão com o servidor usando o socket.</p>
+&nbsp;
 
+* Função MQTTClient_create()
+<p style="text-align: justify;">O MQTTé um protocolo de mensagens leve, projetado para comunicação entre dispositivos em redes de sensores e ambientes de IoT. Esta função inicializa a estrutura do cliente MQTT.</p>
+&nbsp;
+
+* Função MQTTClient_connect()
+<p style="text-align: justify;">Conecta o cliente MQTT ao broker MQTT especificado.</p>
+&nbsp;
+
+* Loop principal
 ```c
-NÃO SEI O QUE TEM QUE INSTALAR
+      while (1) {
+
+        memset(message, 0, sizeof(message));
+
+        valread = read(clientSocket, message, BUFFER_SIZE);
+        if(valread != BUFFER_SIZE){
+            break;
+        }
+
+        if(!strcmp(message, "")){
+            continue;
+        }
+
+        dataJson[strcspn(dataJson, "\r\n")] = 0;
+        strcpy(dataJson, json1);
+        strcat(dataJson, message);
+        strcat(dataJson, json2);
+
+        pubmsg.payload = dataJson;
+        pubmsg.payloadlen = strlen(dataJson);
+        pubmsg.qos = 0;
+        pubmsg.retained = 0;
+        MQTTClient_publishMessage(client, MQTT_TOPIC, &pubmsg, &token);
+        
+        printf("%s\n", message);
+
+    }
 ```
+<p style="text-align: justify;">Esse loop vai ler as mensagens recebidas do servidor usando read() e verifica se a mensagem é vazia ou não. Após isso, constrói uma mensagem JSON com base na mensagem recebida, que a mesma é então publicada no tópico MQTT usando MQTTClient_publishMessage(). A mensagem também é printada no console.</p>
+&nbsp;
+
+# Orientações para execução do código
 
 * Compilação e Execução
 <p style="text-align: justify;">Primeiramente é preciso compilar o módulo que está no arquivo mymodule.c. Para isso, basta estar com todos os arquivos e executar:</p>
