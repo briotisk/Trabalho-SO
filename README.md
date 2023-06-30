@@ -97,18 +97,36 @@
 ```
 &nbsp;
 
-* Compilação
-<p style="text-align: justify;">Para compilar o código utilize o seguinte comando no terminal:</p>
+* Compilação e Execução
+<p style="text-align: justify;">Primeiramente é preciso compilar o módulo que está no arquivo mymodule.c:</p>
+<p style="text-align: justify;">Para isso, basta estar com todos os arquivos e executar:</p>
 
 ```c
-
+$ make
 ```
-&nbsp;
 
-* Execução
-<p style="text-align: justify;">Para executar o código após compilar, utilize o seguinte comando no terminal:</p>
+<p style="text-align: justify;">Após isso, compile o client.c executando:</p>
 
 ```c
-
+$ gcc client.c -o client
 ```
+
+<p style="text-align: justify;">Carregue o módulo com:</p>
+
+```c
+$ sudo insmod mymodule.ko
+```
+
+<p style="text-align: justify;">Por fim, execute o cliente em um novo terminal com o comando:</p>
+
+```c
+$ ./client
+```
+
+<p style="text-align: justify;">Para descarregar o módulo e encerrar a conexão, execute o seguinte comando:</p>
+
+```c
+$ sudo rmmod mymodule.ko
+```
+
 &nbsp;
