@@ -1,9 +1,6 @@
 # Trabalho SSC0640 Sistemas Operacionais
 ## <center>Linux Kernel Module
 &nbsp;
-<p style="text-align: justify;">Daniel Contente Romanzini. NUSP: XXXXXXXX.</p>
-<p style="text-align: justify;">Gabriel Henrique Brioto. NUSP: XXXXXXXX.</p>
-<p style="text-align: justify;">Guilherme Chiarotto de Moraes. NUSP: 12745229.</p>
 
 <table>
 <tr>
