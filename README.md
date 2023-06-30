@@ -5,6 +5,24 @@
 <p style="text-align: justify;">Gabriel Henrique Brioto. NUSP: XXXXXXXX.</p>
 <p style="text-align: justify;">Guilherme Chiarotto de Moraes. NUSP: 12745229.</p>
 
+<table>
+<tr>
+    <td align="center">
+        <a href="https://github.com/Dauboau">
+            <img src="https://avatars.githubusercontent.com/u/86164187?v=4" width="100;" alt="Dauboau"/>
+            <br />
+            <sub><b>Daniel Contente Romanzini</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/Guichiarotto">
+            <img src="https://avatars.githubusercontent.com/u/110139874?v=4" width="100;" alt="Guichiarotto"/>
+            <br />
+            <sub><b>Guilherme Chiarotto De Moraes</b></sub>
+        </a>
+    </td></tr>
+</table>
+
 # Introdução
 <p style="text-align: justify;"></p>
 
