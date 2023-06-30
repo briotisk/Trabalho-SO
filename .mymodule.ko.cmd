@@ -1,1 +1,0 @@
-cmd_/home/gabriel/Trab-SO/mymodule.ko := ld -r  -m elf_x86_64 -z noexecstack   --build-id=sha1  -T scripts/module.lds -o /home/gabriel/Trab-SO/mymodule.ko /home/gabriel/Trab-SO/mymodule.o /home/gabriel/Trab-SO/mymodule.mod.o;  true
