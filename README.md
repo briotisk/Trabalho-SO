@@ -33,67 +33,48 @@
 </tr>
 </table>
 
-# Introdução
-<p style="text-align: justify;"></p>
+# Descrição das principais funções do código fonte
 
-&nbsp;
-# Descrição das principais funções do código
-
-* Função 1
-```c
-
-```
-<p style="text-align: justify;"></p>
-<p style="text-align: justify;"></p>
-<p style="text-align: justify;"></p>
-<p style="text-align: justify;"></p>
-<p style="text-align: justify;"></p>
+* Função static void stop_server(void)
+<p style="text-align: justify;">Esta função é responsável por liberar os recursos relacionados ao socket do servidor.</p>
 &nbsp;
 
-* Função 2
-```c
-
-```
-<p style="text-align: justify;"></p>
+* Função static int start_server(void)
+<p style="text-align: justify;">Esta função é responsável por criar um socket, vinculá-lo a um endereço IP e porta específicos, ouvir por conexões de entrada e aceitar uma conexão do cliente.</p>
 &nbsp;
 
-* Funcão 3
-```c
-
-```
-<p style="text-align: justify;"></p>
+* Função static int send_msg(void)
+<p style="text-align: justify;">Esta função é responsável por enviar a mensagem contida no buffer para o cliente conectado por meio do socket.</p>
 &nbsp;
 
-* Funcão 4
-```c
-
-```
-<p style="text-align: justify;"></p>
+* Funcão static int keylogger_notify(struct notifier_block *self, unsigned long event, void *data)
+<p style="text-align: justify;">Esta é uma função de callback registrada como um notifier para capturar eventos do teclado. Ela é chamada sempre que uma tecla é pressionada. Ela relata a tecla pressionada ao dispositivo de entrada e armazena o valor da tecla no buffer. Quando o buffer está cheio, ele é enviado para o cliente.</p>
 &nbsp;
 
-* Função 5
-```c
-
-```
-<p style="text-align: justify;"></p>
+* Funcão static int start_keylogger(void)
+<p style="text-align: justify;">Esta função é responsável por alocar e registrar um dispositivo de entrada para capturar eventos do teclado.</p>
 &nbsp;
 
-* Função 6
-```c
+* Função static void stop_keylogger(void)
+<p style="text-align: justify;">Esta função é responsável por liberar os recursos relacionados ao keylogger, como o dispositivo de entrada e o notifier.</p>
+&nbsp;
 
-```
-<p style="text-align: justify;"></p>
+* Função static int __init keylogger_init(void)
+<p style="text-align: justify;">Esta é a função de inicialização do módulo. Ela registra o keylogger, inicia o servidor e retorna 0 se todas as operações forem bem-sucedidas.</p>
+&nbsp;
+
+* Função static void __exit keylogger_exit(void)
+<p style="text-align: justify;">Esta é a função de saída do módulo. Ela para o keylogger e o servidor.</p>
 &nbsp;
 
 # Orientações para execução do código
-<p style="text-align: justify;"></p>
 &nbsp;
 
 * Instalação
 <p style="text-align: justify;"></p>
 
 ```c
-
+NÃO SEI
 ```
 &nbsp;
 
