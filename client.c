@@ -84,6 +84,7 @@ int main() {
             continue;
         }
 
+        dataJson[strcspn(dataJson, "\r\n")] = 0;
         strcpy(dataJson, json1);
         strcat(dataJson, message);
         strcat(dataJson, json2);
