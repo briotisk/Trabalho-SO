@@ -25,7 +25,7 @@
         <a href="https://github.com/briotisk">
             <img src="https://avatars.githubusercontent.com/u/86164187?v=4" width="100;" alt="briotisk"/>
             <br />
-            <sub><b>Daniel Contente Romanzini</b></sub>
+            <sub><b>Gabriel Henrique Brioto</b></sub>
         </a>
     </td>
 </tr>
