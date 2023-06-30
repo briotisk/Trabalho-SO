@@ -12,6 +12,8 @@
             <img src="https://avatars.githubusercontent.com/u/86164187?v=4" width="100;" alt="Dauboau"/>
             <br />
             <sub><b>Daniel Contente Romanzini</b></sub>
+            <br />
+            <sub>12547614</sub>
         </a>
     </td>
     <td align="center">
@@ -28,6 +30,8 @@
             <img src="https://avatars.githubusercontent.com/u/86500240?v=4" width="100;" alt="briotisk"/>
             <br />
             <sub><b>Gabriel Henrique Brioto</b></sub>
+            <br />
+            <sub>12547764</sub>
         </a>
     </td>
 </tr>
