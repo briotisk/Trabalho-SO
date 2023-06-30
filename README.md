@@ -124,7 +124,8 @@
 
 ## IBM Watson IoT Platform
 
-
+As mensagens publicadas através do protocolo MQTT são recebidas pela plataforma no servidor US-South em Dallas, que faz parte da IBM Cloud, permitindo a visualização das mensagens, armazenamento de histórico, visualização da quantidade de dados transmitidos e interação com APIs externas.
+&nbsp;
 
 # Orientações para execução do código
 
